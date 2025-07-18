@@ -1,55 +1,177 @@
-<!DOCTYPE html><html lang="en">
+<!DOCTYPE html>
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Nanhe Kahaniyaan - Jahan har kahani sikhaye ek nayi baat</title>
+
+  <!-- Kids Friendly Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@400;700&display=swap" rel="stylesheet">
+
   <style>
-    body { font-family: Arial, sans-serif; margin: 0; padding: 0; background: #fefae0; }
-    header { background: #ffb703; color: #000; padding: 20px; text-align: center; font-size: 1.5em; font-weight: bold; }
-    nav { display: flex; justify-content: center; margin: 20px 0; flex-wrap: wrap; }
-    nav button { margin: 10px; padding: 10px 20px; font-size: 1em; cursor: pointer; border: none; background: #219ebc; color: white; border-radius: 5px; }
-    .tabs { display: flex; justify-content: center; margin-top: 20px; flex-wrap: wrap; }
-    .tabs button { margin: 8px; padding: 8px 16px; font-size: 0.9em; cursor: pointer; border: none; background: #8ecae6; color: #000; border-radius: 4px; }
-    .content-section { display: none; padding: 20px; background: white; max-width: 800px; margin: auto; margin-top: 20px; box-shadow: 0 0 10px rgba(0,0,0,0.1); border-radius: 10px; }
-    .active { display: block; }
-    footer { background: #023047; color: white; padding: 20px; text-align: center; font-size: 0.9em; }
-    .logo-section { text-align: center; margin: 30px auto 10px; }
-    .logo-section img { width: 100px; height: auto; animation: bounce 2s infinite; }
-    .logo-section h3 { font-size: 1.2em; margin-top: 10px; color: #333; }
+    body {
+      font-family: 'Comic Neue', cursive;
+      margin: 0;
+      padding: 0;
+      background: #fff8e1;
+    }
+
+    header {
+      background: #ff9800;
+      color: #fff;
+      padding: 20px;
+      text-align: center;
+      font-size: 1.6em;
+      font-weight: bold;
+      letter-spacing: 1px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+
+    nav {
+      display: flex;
+      justify-content: center;
+      margin: 20px 0;
+      flex-wrap: wrap;
+    }
+
+    nav button {
+      margin: 10px;
+      padding: 12px 24px;
+      font-size: 1em;
+      cursor: pointer;
+      border: none;
+      background: #29b6f6;
+      color: white;
+      border-radius: 10px;
+      transition: background 0.3s ease;
+      box-shadow: 2px 4px 10px rgba(0,0,0,0.1);
+    }
+
+    nav button:hover {
+      background: #0288d1;
+    }
+
+    .tabs {
+      display: flex;
+      justify-content: center;
+      margin-top: 20px;
+      flex-wrap: wrap;
+    }
+
+    .tabs button {
+      margin: 8px;
+      padding: 10px 20px;
+      font-size: 0.95em;
+      cursor: pointer;
+      border: none;
+      background: #ffd54f;
+      color: #000;
+      border-radius: 6px;
+      transition: background 0.3s ease;
+      box-shadow: 1px 3px 6px rgba(0,0,0,0.08);
+    }
+
+    .tabs button:hover {
+      background: #fbc02d;
+    }
+
+    .content-section {
+      display: none;
+      padding: 20px;
+      background: #ffffff;
+      max-width: 800px;
+      margin: auto;
+      margin-top: 20px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.15);
+      border-radius: 12px;
+    }
+
+    .active {
+      display: block;
+    }
+
+    footer {
+      background: #3f51b5;
+      color: white;
+      padding: 20px;
+      text-align: center;
+      font-size: 0.9em;
+      margin-top: 50px;
+    }
+
+    .logo-section {
+      text-align: center;
+      margin: 30px auto 10px;
+    }
+
+    .logo-section img {
+      width: 100px;
+      height: auto;
+      animation: bounce 2s infinite;
+    }
+
+    .logo-section h3 {
+      font-size: 1.3em;
+      margin-top: 10px;
+      color: #444;
+    }
+
     @keyframes bounce {
       0%, 100% { transform: translateY(0); }
       50% { transform: translateY(-10px); }
     }
-    .media-links { margin-top: 20px; }
+
+    .media-links {
+      margin-top: 20px;
+    }
+
     .media-links a {
       display: inline-block;
       margin: 5px 10px;
       text-decoration: none;
-      background: #fb8500;
+      background: #66bb6a;
       color: white;
       padding: 10px 15px;
-      border-radius: 5px;
+      border-radius: 6px;
+      transition: background 0.3s ease;
     }
-    iframe { max-width: 100%; border-radius: 10px; }
+
+    .media-links a:hover {
+      background: #388e3c;
+    }
+
+    iframe {
+      max-width: 100%;
+      border-radius: 12px;
+    }
   </style>
 </head>
 <body>
+
   <header>
     Nanhe Kahaniyaan – Jahan har kahani sikhaye ek nayi baat
-  </header>  <div class="logo-section">
+  </header>
+
+  <div class="logo-section">
     <img src="Logo456.webp" alt="Logo" />
     <h3>Welcome to Virtual Play School for Your Kids</h3>
-  </div>  <nav>
+  </div>
+
+  <nav>
     <button onclick="showMain('free')">Free Videos & PDFs</button>
     <button onclick="handlePremiumClick()">Premium</button>
-  </nav>  <div class="tabs" id="section-tabs" style="display:none">
+  </nav>
+
+  <div class="tabs" id="section-tabs" style="display:none">
     <button onclick="showSection('english')">English</button>
     <button onclick="showSection('hindi')">Hindi</button>
     <button onclick="showSection('math')">Mathematics</button>
     <button onclick="showSection('skill')">Skill Development</button>
     <button onclick="showSection('story')">Stories</button>
     <button onclick="showSection('bangla')">Bangla</button>
-  </div>  <div class="content-section" id="free">
+  </div>
+
+  <div class="content-section" id="free">
     <h2>🎥 Free Videos & PDFs</h2>
     <iframe width="560" height="315" src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="Demo Video" allowfullscreen></iframe>
     <div class="media-links">
@@ -57,47 +179,63 @@
       <a href="#" target="_blank">📄 Free Worksheet 2</a>
       <a href="#" target="_blank">📄 Free Worksheet 3</a>
     </div>
-  </div>  <div class="content-section" id="english">
+  </div>
+
+  <div class="content-section" id="english">
     <h2>English Section</h2>
     <iframe src="https://www.youtube.com/embed/tgbNymZ7vqY" allowfullscreen></iframe>
     <div class="media-links">
       <a href="https://example.com/english-demo.pdf" target="_blank">📄 Download PDF</a>
     </div>
-  </div>  <div class="content-section" id="hindi">
+  </div>
+
+  <div class="content-section" id="hindi">
     <h2>Hindi Section</h2>
     <iframe src="https://www.youtube.com/embed/4bnpKdL7a0o" allowfullscreen></iframe>
     <div class="media-links">
       <a href="https://example.com/hindi-demo.pdf" target="_blank">📄 Download PDF</a>
     </div>
-  </div>  <div class="content-section" id="math">
+  </div>
+
+  <div class="content-section" id="math">
     <h2>Mathematics Section</h2>
     <iframe src="https://www.youtube.com/embed/5kdD8qxwHgI" allowfullscreen></iframe>
     <div class="media-links">
       <a href="https://example.com/maths-demo.pdf" target="_blank">📄 Download PDF</a>
     </div>
-  </div>  <div class="content-section" id="skill">
+  </div>
+
+  <div class="content-section" id="skill">
     <h2>Skill Development Section</h2>
     <iframe src="https://www.youtube.com/embed/BnWcv9A19Qk" allowfullscreen></iframe>
     <div class="media-links">
       <a href="https://example.com/skill-demo.pdf" target="_blank">📄 Download PDF</a>
     </div>
-  </div>  <div class="content-section" id="story">
+  </div>
+
+  <div class="content-section" id="story">
     <h2>Stories Section</h2>
     <iframe src="https://www.youtube.com/embed/lTTajzrSkCw" allowfullscreen></iframe>
     <div class="media-links">
       <a href="https://example.com/story-demo.pdf" target="_blank">📄 Download PDF</a>
     </div>
-  </div>  <div class="content-section" id="bangla">
+  </div>
+
+  <div class="content-section" id="bangla">
     <h2>Bangla Section</h2>
     <iframe src="https://www.youtube.com/embed/nFJAmkUui4w" allowfullscreen></iframe>
     <div class="media-links">
       <a href="https://example.com/bangla-demo.pdf" target="_blank">📄 Download PDF</a>
     </div>
-  </div>  <footer>
+  </div>
+
+  <footer>
     <p><strong>About Us:</strong><br>
     Nanhe Kahaniyaan ka maksad hai Bharat ke sabhi bacchon ko kam kharche me acchi, rochak aur manoranjak shiksha dena. Hum ek Virtual Play School hai jahan English, Hindi, Maths, Skill aur Kahaniyon ke madhyam se bachpan ko behtar banaya jata hai.<br><br>
     <strong>Inquiry & Support:</strong> Contact: contactnanhekhaniya@gmail.com</p>
-  </footer>  <script>
+  </footer>
+
+  <script>
     let currentMain = '';
     const validPasswords = ["NANHE-1234-AZ", "NANHE-4321-BY"];
     const masterPassword = "Biswanath@09";
@@ -128,7 +266,6 @@
       const access = localStorage.getItem("premium_access");
       const expiry = new Date(localStorage.getItem("premium_expiry"));
       const today = new Date();
-
       if (access === "granted" && today <= expiry) {
         showMain('premium');
         return;
@@ -136,7 +273,6 @@
         alert("❗ Aapka Premium access expire ho gaya hai. Kripya naya subscription lijiye.");
         return;
       }
-
       const input = prompt("Enter your premium password:");
       validateAndGrant(input);
     }
@@ -153,5 +289,7 @@
         alert("❌ Invalid password. Premium access denied.");
       }
     }
-  </script></body>
+  </script>
+
+</body>
 </html>
