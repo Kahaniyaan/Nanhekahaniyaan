@@ -1,124 +1,73 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html><html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Nanhe Kahaniyaan - Virtual Play School</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nanhe Kahaniyaan - Jahan har kahani sikhaye ek nayi baat</title>
   <style>
-    body { margin: 0; font-family: sans-serif; background: #fff9f2; }
-    header, footer {
-      background: #ffb703;
-      text-align: center;
-      padding: 15px;
-      font-weight: bold;
-    }
-    .logo-section {
-      text-align: center;
-      margin-top: 20px;
-    }
-    .logo-section img {
-      width: 100px;
-    }
-    nav {
-      display: flex;
-      justify-content: center;
-      gap: 15px;
-      margin: 20px 0;
-      flex-wrap: wrap;
-    }
-    nav button {
-      padding: 10px 15px;
-      background: #219ebc;
-      color: white;
-      border: none;
-      border-radius: 6px;
-      cursor: pointer;
-    }
-    .tabs {
-      display: none;
-      justify-content: center;
-      gap: 10px;
-      margin-bottom: 20px;
-      flex-wrap: wrap;
-    }
-    .tabs button {
-      padding: 8px 12px;
-      background: #fb8500;
-      color: white;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-    }
-    #expiry-message, #renew-btn {
-      text-align: center;
-      display: none;
-    }
-    #renew-btn {
-      padding: 10px 20px;
-      background: #d62828;
-      color: white;
-      border: none;
-      margin-top: 10px;
-      border-radius: 6px;
-    }
-    footer {
-      background: #023047;
-      color: white;
-      padding: 20px;
-      position: fixed;
-      width: 100%;
-      bottom: 0;
-      font-size: 0.9em;
+    body { font-family: Arial, sans-serif; margin: 0; padding: 0; background: #f9f9f9; }
+    header { background: #ffb703; color: #000; padding: 20px; text-align: center; font-size: 1.5em; font-weight: bold; }
+    nav { display: flex; justify-content: center; margin: 20px 0; flex-wrap: wrap; }
+    nav button { margin: 10px; padding: 10px 20px; font-size: 1em; cursor: pointer; border: none; background: #219ebc; color: white; border-radius: 5px; }
+    .content-section { display: none; padding: 20px; background: white; max-width: 800px; margin: auto; margin-top: 20px; box-shadow: 0 0 10px rgba(0,0,0,0.1); border-radius: 10px; }
+    .active { display: block; }
+    #expiry-message { display: none; text-align: center; margin-top: 30px; color: red; font-weight: bold; }
+    #renew-btn { display: none; margin-top: 10px; padding: 10px 15px; background: #ff6b6b; color: white; border: none; border-radius: 6px; cursor: pointer; }
+    footer { background: #023047; color: white; padding: 20px; text-align: center; font-size: 0.9em; position: fixed; width: 100%; bottom: 0; }
+    .logo-section { text-align: center; margin: 30px auto 10px; }
+    .logo-section img { width: 100px; height: auto; animation: bounce 2s infinite; }
+    .logo-section h3 { font-size: 1.2em; margin-top: 10px; color: #333; }
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
     }
   </style>
 </head>
 <body>
-  <header>Nanhe Kahaniyaan – Jahan har kahani sikhaye ek nayi baat</header>
-
-  <div class="logo-section">
-    <img src="Logo456.webp" alt="Logo">
+  <header>
+    Nanhe Kahaniyaan – Jahan har kahani sikhaye ek nayi baat
+  </header>  <div class="logo-section">
+    <img src="Logo456.webp" alt="Logo" />
     <h3>Welcome to Virtual Play School for Your Kids</h3>
-  </div>
-
-  <nav>
+  </div>  <nav>
     <button onclick="showMain('general')">General</button>
     <button onclick="handlePremiumClick()">Premium</button>
-  </nav>
-
-  <div class="tabs" id="general-tabs">
-    <button onclick="location.href='demo-hindi.html'">Hindi</button>
-    <button onclick="location.href='demo-english.html'">English</button>
-  </div>
-
-  <div class="tabs" id="premium-tabs">
-    <button onclick="location.href='demo-hindi.html'">Hindi</button>
-    <button onclick="location.href='demo-english.html'">English</button>
-    <button onclick="location.href='demo-bangla.html'">Bangla</button>
-    <button onclick="location.href='demo-story.html'">Stories</button>
-    <button onclick="location.href='demo-skill.html'">Skill Dev</button>
-    <button onclick="location.href='demo-math.html'">Math</button>
-  </div>
-
-  <div id="expiry-message">
-    <p>❗ Aapka Premium access expire ho gaya hai. Kripya naya subscription lijiye.</p>
+  </nav>  <div class="tabs" id="section-tabs-general" style="display:none">
+    <button onclick="window.location.href='demo-free.html'">📘 Free Video & PDF (All Subjects)</button>
+  </div>  <div class="tabs" id="section-tabs-premium" style="display:none">
+    <button onclick="window.location.href='demo-hindi.html'">Hindi</button>
+    <button onclick="window.location.href='demo-english.html'">English</button>
+    <button onclick="window.location.href='demo-bangla.html'">Bangla</button>
+    <button onclick="window.location.href='demo-story.html'">Stories</button>
+    <button onclick="window.location.href='demo-skill.html'">Skill Development</button>
+    <button onclick="window.location.href='demo-math.html'">Mathematics</button>
+  </div>  <div class="content-section" id="content-message">
+    <p>Please choose a section to begin exploring content.</p>
+  </div>  <div id="expiry-message">
+    ❗ Aapka Premium access expire ho gaya hai. Kripya naya subscription lijiye.
   </div>
   <div style="text-align:center">
     <button id="renew-btn" onclick="renewAccess()">🔄 Renew Access</button>
-  </div>
-
-  <footer>
+  </div>  <footer>
     <p><strong>About Us:</strong><br>
-    Nanhe Kahaniyaan ka maksad hai Bharat ke sabhi bacchon ko kam kharche me acchi, rochak aur manoranjak shiksha dena.<br><br>
-    <strong>Inquiry & Support:</strong> contactnanhekhaniya@gmail.com</p>
-  </footer>
-
-  <script>
+    Nanhe Kahaniyaan ka maksad hai Bharat ke sabhi bacchon ko kam kharche me acchi, rochak aur manoranjak shiksha dena. Hum ek Virtual Play School hai jahan English, Hindi, Maths, Skill aur Kahaniyon ke madhyam se bachpan ko behtar banaya jata hai.<br><br>
+    <strong>Inquiry & Support:</strong> Contact: contactnanhekhaniya@gmail.com</p>
+  </footer>  <script>
     const validPasswords = ["NANHE-1234-AZ", "NANHE-4321-BY"];
     const masterPassword = "Biswanath@09";
 
     function showMain(type) {
-      document.getElementById("general-tabs").style.display = type === 'general' ? 'flex' : 'none';
-      document.getElementById("premium-tabs").style.display = type === 'premium' ? 'flex' : 'none';
+      document.getElementById('section-tabs-general').style.display = 'none';
+      document.getElementById('section-tabs-premium').style.display = 'none';
+      document.getElementById('content-message').classList.remove('active');
+
+      if (type === 'general') {
+        document.getElementById('section-tabs-general').style.display = 'flex';
+        document.getElementById('content-message').classList.add('active');
+      }
+      if (type === 'premium') {
+        document.getElementById('section-tabs-premium').style.display = 'flex';
+        document.getElementById('content-message').classList.add('active');
+      }
     }
 
     function handlePremiumClick() {
@@ -128,13 +77,15 @@
 
       if (access === "granted" && today <= expiry) {
         showMain('premium');
+        return;
       } else if (access === "granted" && today > expiry) {
         document.getElementById("expiry-message").style.display = "block";
         document.getElementById("renew-btn").style.display = "inline-block";
-      } else {
-        const input = prompt("Enter your premium password:");
-        validateAndGrant(input);
+        return;
       }
+
+      const input = prompt("Enter your premium password:");
+      validateAndGrant(input);
     }
 
     function renewAccess() {
@@ -148,6 +99,7 @@
         const expiryDate = new Date();
         expiryDate.setDate(expiryDate.getDate() + 30);
         localStorage.setItem("premium_expiry", expiryDate.toISOString());
+
         alert("✅ Access granted to Premium section for 30 days");
         document.getElementById("expiry-message").style.display = "none";
         document.getElementById("renew-btn").style.display = "none";
@@ -156,6 +108,5 @@
         alert("❌ Invalid password. Premium access denied.");
       }
     }
-  </script>
-</body>
+  </script></body>
 </html>
