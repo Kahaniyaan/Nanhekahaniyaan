@@ -1,10 +1,10 @@
-<!-- hindi.html -->
+
 <!DOCTYPE html>
-<html lang="hi">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Premium Hindi - Nanhe Kahaniyaan</title>
+  <title>Nanhe Kahaniyaan</title>
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -27,43 +27,34 @@
       margin: auto;
       padding: 20px;
     }
-    .video-section, .pdf-section {
-      margin-bottom: 30px;
-    }
-    iframe {
-      width: 100%;
-      height: 315px;
-      margin-top: 10px;
-      border-radius: 10px;
-    }
-    .pdf-link {
-      display: block;
-      margin: 8px 0;
-      padding: 10px;
-      background: #ffb703;
-      color: #000;
-      text-decoration: none;
+    .tabs button {
+      display: inline-block;
+      margin: 10px;
+      padding: 10px 20px;
+      background-color: #f28c28;
+      color: white;
+      border: none;
       border-radius: 5px;
+      cursor: pointer;
+    }
+    .tabs {
+      text-align: center;
     }
   </style>
 </head>
 <body>
   <header>
     <h2>Nanhe Kahaniyaan</h2>
-    <p>Premium Content – Hindi Section</p>
+    <p>Welcome to the Premium Content Section</p>
   </header>
 
-  <div class="content">
-    <div class="video-section">
-      <h2>🎥 Hindi Learning Videos</h2>
-      <iframe src="https://www.youtube.com/embed/YOUR_VIDEO_ID" allowfullscreen></iframe>
-    </div>
-
-    <div class="pdf-section">
-      <h2>📄 Downloadable PDFs</h2>
-      <a class="pdf-link" href="https://example.com/hindi-worksheet1.pdf" target="_blank">Hindi Worksheet 1</a>
-      <a class="pdf-link" href="https://example.com/hindi-worksheet2.pdf" target="_blank">Hindi Worksheet 2</a>
-    </div>
+  <div class="tabs" id="premium-tabs">
+    <button onclick="location.href='premium-hindi.html'">Hindi</button>
+    <button onclick="location.href='premium-english.html'">English</button>
+    <button onclick="location.href='premium-bangla.html'">Bangla</button>
+    <button onclick="location.href='premium-math.html'">Mathematics</button>
+    <button onclick="location.href='premium-skill.html'">Skill Development</button>
+    <button onclick="location.href='premium-stories.html'">Stories</button>
   </div>
 
   <footer>
