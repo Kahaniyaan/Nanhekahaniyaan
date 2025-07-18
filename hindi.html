@@ -1,64 +1,88 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Nanhe Kahaniyaan</title>
+  <title>Nanhe Kahaniyaan - Virtual Play School</title>
   <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      padding: 0;
-      background: #fff9f1;
-    }
-    header, footer {
-      background: #f28c28;
-      color: white;
-      text-align: center;
-      padding: 15px 10px;
-    }
-    h1 {
-      text-align: center;
-      color: #333;
-    }
-    .content {
-      max-width: 800px;
-      margin: auto;
-      padding: 20px;
-    }
-    .tabs button {
-      display: inline-block;
-      margin: 10px;
-      padding: 10px 20px;
-      background-color: #f28c28;
-      color: white;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-    }
-    .tabs {
-      text-align: center;
+    body { margin: 0; padding: 0; font-family: sans-serif; background: #f0f0f0; }
+    header { background: #f28c28; color: white; text-align: center; padding: 20px; }
+    nav { text-align: center; margin: 20px; }
+    nav button { padding: 10px 20px; margin: 10px; font-size: 16px; cursor: pointer; background: #219ebc; color: white; border: none; border-radius: 5px; }
+    .footer { background: #023047; color: white; padding: 20px; text-align: center; position: fixed; width: 100%; bottom: 0; }
+    .logo-section { text-align: center; margin: 30px auto 10px; }
+    .logo-section img { width: 100px; animation: bounce 2s infinite; }
+    .logo-section h3 { font-size: 1.2em; margin-top: 10px; color: #333; }
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
     }
   </style>
 </head>
 <body>
   <header>
-    <h2>Nanhe Kahaniyaan</h2>
-    <p>Welcome to the Premium Content Section</p>
+    Nanhe Kahaniyaan – Jahan har kahani sikhaye ek nayi baat
   </header>
 
-  <div class="tabs" id="premium-tabs">
-    <button onclick="location.href='premium-hindi.html'">Hindi</button>
-    <button onclick="location.href='premium-english.html'">English</button>
-    <button onclick="location.href='premium-bangla.html'">Bangla</button>
-    <button onclick="location.href='premium-math.html'">Mathematics</button>
-    <button onclick="location.href='premium-skill.html'">Skill Development</button>
-    <button onclick="location.href='premium-stories.html'">Stories</button>
+  <div class="logo-section">
+    <img src="Logo456.webp" alt="Logo" />
+    <h3>Welcome to Virtual Play School for Your Kids</h3>
   </div>
 
-  <footer>
-    <p>&copy; 2025 Nanhe Kahaniyaan | Contact: contactnanhekhaniya@gmail.com</p>
-  </footer>
+  <nav>
+    <button onclick="window.location.href='free-content.html'">🎁 Free Video & PDF (All Subjects)</button>
+    <button onclick="handlePremiumClick()">🔐 Premium Section</button>
+  </nav>
+
+  <div id="premium-tabs" style="display:none; text-align:center;">
+    <button onclick="window.location.href='premium-hindi.html'">📘 Hindi</button>
+    <button onclick="window.location.href='premium-english.html'">📗 English</button>
+    <button onclick="window.location.href='premium-bangla.html'">📕 Bangla</button>
+    <button onclick="window.location.href='premium-math.html'">🧮 Mathematics</button>
+    <button onclick="window.location.href='premium-skill.html'">🧠 Skill Development</button>
+    <button onclick="window.location.href='premium-story.html'">📖 Stories</button>
+  </div>
+
+  <div class="footer">
+    <p><strong>About Us:</strong><br>
+    Nanhe Kahaniyaan ka maksad hai Bharat ke sabhi bacchon ko kam kharche me acchi, rochak aur manoranjak shiksha dena.<br>
+    Hum ek Virtual Play School hai jahan English, Hindi, Maths, Skill aur Kahaniyon ke madhyam se bachpan ko behtar banaya jata hai.<br><br>
+    <strong>Contact:</strong> contactnanhekhaniya@gmail.com</p>
+  </div>
+
+  <script>
+    const validPasswords = ["NANHE-1234-AZ", "NANHE-4321-BY"];
+    const masterPassword = "Biswanath@09";
+
+    function handlePremiumClick() {
+      const access = localStorage.getItem("premium_access");
+      const expiry = new Date(localStorage.getItem("premium_expiry"));
+      const today = new Date();
+
+      if (access === "granted" && today <= expiry) {
+        document.getElementById("premium-tabs").style.display = "block";
+        return;
+      } else if (access === "granted" && today > expiry) {
+        alert("❗ Aapka Premium access expire ho gaya hai. Kripya naya subscription lijiye.");
+        return;
+      }
+
+      const input = prompt("Enter your premium password:");
+      validateAndGrant(input);
+    }
+
+    function validateAndGrant(input) {
+      if (validPasswords.includes(input) || input === masterPassword) {
+        localStorage.setItem("premium_access", "granted");
+        const expiryDate = new Date();
+        expiryDate.setDate(expiryDate.getDate() + 30);
+        localStorage.setItem("premium_expiry", expiryDate.toISOString());
+        alert("✅ Access granted to Premium section for 30 days");
+        document.getElementById("premium-tabs").style.display = "block";
+      } else {
+        alert("❌ Invalid password. Premium access denied.");
+      }
+    }
+  </script>
 </body>
 </html>
