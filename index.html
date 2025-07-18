@@ -1,20 +1,20 @@
 <!DOCTYPE html><html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Nanhe Kahaniyaan - Virtual Play School</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nanhe Kahaniyaan - Jahan har kahani sikhaye ek nayi baat</title>
   <style>
-    body { font-family: Arial, sans-serif; margin: 0; padding: 0; background: #f0f9f4; }
+    body { font-family: Arial, sans-serif; margin: 0; padding: 0; background: #f9f9f9; }
     header { background: #ffb703; color: #000; padding: 20px; text-align: center; font-size: 1.5em; font-weight: bold; }
     nav { display: flex; justify-content: center; margin: 20px 0; flex-wrap: wrap; }
     nav button { margin: 10px; padding: 10px 20px; font-size: 1em; cursor: pointer; border: none; background: #219ebc; color: white; border-radius: 5px; }
-    .tabs { display: flex; justify-content: center; margin-top: 20px; flex-wrap: wrap; }
-    .tabs button { margin: 8px; padding: 8px 16px; font-size: 0.9em; cursor: pointer; border: none; background: #8ecae6; color: #000; border-radius: 4px; }
     .logo-section { text-align: center; margin: 30px auto 10px; }
-    .logo-section img { width: 100px; height: auto; }
+    .logo-section img { width: 100px; height: auto; animation: bounce 2s infinite; }
     .logo-section h3 { font-size: 1.2em; margin-top: 10px; color: #333; }
-    #expiry-message { display: none; text-align: center; margin-top: 30px; color: red; font-weight: bold; }
-    #renew-btn { display: none; margin-top: 10px; padding: 10px 15px; background: #ff6b6b; color: white; border: none; border-radius: 6px; cursor: pointer; }
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
     footer { background: #023047; color: white; padding: 20px; text-align: center; font-size: 0.9em; position: fixed; width: 100%; bottom: 0; }
   </style>
 </head>
@@ -25,68 +25,37 @@
     <img src="Logo456.webp" alt="Logo" />
     <h3>Welcome to Virtual Play School for Your Kids</h3>
   </div>  <nav>
-    <button onclick="showMain('general')">General</button>
-    <button onclick="showMain('premium')">Premium</button>
-  </nav>  <div class="tabs" id="section-tabs" style="display:none">
-    <button id="free-tab" onclick="showSection('free')" style="display:none">Free Video & PDF (All Subjects)</button>
-    <button onclick="showSection('hindi')">Hindi</button>
-    <button onclick="showSection('english')">English</button>
-    <button onclick="showSection('math')">Mathematics</button>
-    <button onclick="showSection('skill')">Skill Development</button>
-    <button onclick="showSection('story')">Stories</button>
-  </div>  <div id="expiry-message">
+    <button onclick="location.href='free.html'">Free Video & PDF (All Subjects)</button>
+    <button onclick="handlePremiumClick()">Premium</button>
+  </nav>  <div id="expiry-message" style="display:none; text-align:center; color:red; font-weight:bold; margin-top:30px">
     ❗ Aapka Premium access expire ho gaya hai. Kripya naya subscription lijiye.
   </div>
   <div style="text-align:center">
-    <button id="renew-btn" onclick="renewAccess()">🔄 Renew Access</button>
+    <button id="renew-btn" style="display:none; margin-top:10px; padding:10px 15px; background:#ff6b6b; color:white; border:none; border-radius:6px; cursor:pointer" onclick="renewAccess()">🔄 Renew Access</button>
   </div>  <footer>
     <p><strong>About Us:</strong><br>
-    Nanhe Kahaniyaan ka maksad hai Bharat ke sabhi bacchon ko kam kharche me acchi, rochak aur manoranjak shiksha dena. Hum ek Virtual Play School hai jahan English, Hindi, Maths, Skill aur Kahaniyon ke madhyam se bachpan ko behtar banaya jata hai.<br><br>
+    Nanhe Kahaniyaan ka maksad hai Bharat ke sabhi bacchon ko kam kharche me acchi, rochak aur manoranjak shiksha dena. Hum ek Virtual Play School hai jahan English, Hindi, Maths, Skill, Bangla aur Kahaniyon ke madhyam se bachpan ko behtar banaya jata hai.<br><br>
     <strong>Inquiry & Support:</strong> Contact: contactnanhekhaniya@gmail.com</p>
   </footer>  <script>
-    let currentMain = '';
-
     const validPasswords = ["NANHE-1234-AZ", "NANHE-4321-BY"];
     const masterPassword = "Biswanath@09";
 
-    function showMain(type) {
-      currentMain = type;
-      if (type === "general") {
-        document.getElementById("section-tabs").style.display = "flex";
-        document.getElementById("free-tab").style.display = "inline-block";
-      } else if (type === "premium") {
-        const access = localStorage.getItem("premium_access");
-        const expiry = new Date(localStorage.getItem("premium_expiry"));
-        const today = new Date();
+    function handlePremiumClick() {
+      const access = localStorage.getItem("premium_access");
+      const expiry = new Date(localStorage.getItem("premium_expiry"));
+      const today = new Date();
 
-        if (access === "granted" && today <= expiry) {
-          document.getElementById("section-tabs").style.display = "flex";
-          document.getElementById("free-tab").style.display = "none";
-        } else if (access === "granted" && today > expiry) {
-          document.getElementById("expiry-message").style.display = "block";
-          document.getElementById("renew-btn").style.display = "inline-block";
-          return;
-        } else {
-          const input = prompt("Enter your premium password:");
-          validateAndGrant(input);
-          return;
-        }
+      if (access === "granted" && today <= expiry) {
+        window.location.href = 'premium.html';
+        return;
+      } else if (access === "granted" && today > expiry) {
+        document.getElementById("expiry-message").style.display = "block";
+        document.getElementById("renew-btn").style.display = "inline-block";
+        return;
       }
-    }
 
-    function validateAndGrant(input) {
-      if (validPasswords.includes(input) || input === masterPassword) {
-        localStorage.setItem("premium_access", "granted");
-        const expiryDate = new Date();
-        expiryDate.setDate(expiryDate.getDate() + 30);
-        localStorage.setItem("premium_expiry", expiryDate.toISOString());
-        alert("✅ Access granted to Premium section for 30 days");
-        document.getElementById("expiry-message").style.display = "none";
-        document.getElementById("renew-btn").style.display = "none";
-        showMain("premium");
-      } else {
-        alert("❌ Invalid password. Premium access denied.");
-      }
+      const input = prompt("Enter your premium password:");
+      validateAndGrant(input);
     }
 
     function renewAccess() {
@@ -94,20 +63,20 @@
       validateAndGrant(input);
     }
 
-    function showSection(sectionId) {
-      const sectionLinks = {
-        hindi: "hindi.html",
-        english: "english.html",
-        math: "math.html",
-        skill: "skill.html",
-        story: "story.html",
-        free: "free.html"
-      };
-      const url = sectionLinks[sectionId];
-      if (url) {
-        window.open(url, "_blank");
+    function validateAndGrant(input) {
+      if (validPasswords.includes(input) || input === masterPassword) {
+        localStorage.setItem("premium_access", "granted");
+
+        const expiryDate = new Date();
+        expiryDate.setDate(expiryDate.getDate() + 30);
+        localStorage.setItem("premium_expiry", expiryDate.toISOString());
+
+        alert("✅ Access granted to Premium section for 30 days");
+        document.getElementById("expiry-message").style.display = "none";
+        document.getElementById("renew-btn").style.display = "none";
+        window.location.href = 'premium.html';
       } else {
-        alert("Invalid section.");
+        alert("❌ Invalid password. Premium access denied.");
       }
     }
   </script></body>
