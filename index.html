@@ -1,95 +1,67 @@
 <!DOCTYPE html><html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Nanhe Kahaniyaan - Jahan har kahani sikhaye ek nayi baat</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Premium - Nanhe Kahaniyaan</title>
   <style>
-    body { font-family: Arial, sans-serif; margin: 0; padding: 0; background: #f9f9f9; }
-    header { background: #ffb703; color: #000; padding: 20px; text-align: center; font-size: 1.5em; font-weight: bold; }
-    nav { display: flex; justify-content: center; flex-wrap: wrap; background: #8ecae6; padding: 10px 0; }
-    nav button { margin: 8px; padding: 10px 20px; font-size: 1em; cursor: pointer; border: none; background: #219ebc; color: white; border-radius: 5px; }
-    .logo-section { text-align: center; margin: 30px auto 10px; }
-    .logo-section img { width: 100px; height: auto; animation: bounce 2s infinite; }
-    .logo-section h3 { font-size: 1.2em; margin-top: 10px; color: #333; }
-    @keyframes bounce {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-10px); }
-    }
-    footer { background: #023047; color: white; padding: 20px; text-align: center; font-size: 0.9em; position: fixed; width: 100%; bottom: 0; }
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+      background-color: #fff8e1;
+    }header {
+  background-color: #f28c28;
+  color: white;
+  text-align: center;
+  padding: 20px 10px;
+}
+
+header img {
+  height: 60px;
+  margin-bottom: 10px;
+}
+
+h1 {
+  margin: 0;
+  font-size: 26px;
+}
+
+.subtabs {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 16px;
+  margin: 40px auto;
+  max-width: 900px;
+}
+
+.subtab {
+  padding: 14px 24px;
+  background-color: #f28c28;
+  color: white;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 16px;
+  transition: background 0.3s;
+}
+
+.subtab:hover {
+  background-color: #ff9900;
+}
+
   </style>
 </head>
-<body>
-  <header>
-    Nanhe Kahaniyaan – Jahan har kahani sikhaye ek nayi baat
-  </header>  <div class="logo-section">
-    <img src="Logo456.webp" alt="Logo" />
-    <h3>Welcome to Virtual Play School for Your Kids</h3>
-  </div>  <nav>
-    <button onclick="window.location.href='general-content.html'">🎁 Free Video & PDF (All Subjects)</button>
-    <button onclick="handlePremiumClick()">⭐ Premium Section</button>
-  </nav>  <div id="expiry-message" style="display:none; text-align:center; color:red; font-weight:bold; margin-top:20px">
-    ❗ Aapka Premium access expire ho gaya hai. Kripya naya subscription lijiye.
-  </div>
-  <div style="text-align:center">
-    <button id="renew-btn" onclick="renewAccess()" style="display:none; margin-top: 10px; padding: 10px 15px; background: #ff6b6b; color: white; border: none; border-radius: 6px; cursor: pointer;">🔄 Renew Access</button>
-  </div>  <div id="premium-tabs" style="display:none; text-align:center; margin:20px auto;">
-    <h2>Premium Learning Sections</h2>
-    <button onclick="openPage('premium-hindi.html')">Hindi</button>
-    <button onclick="openPage('premium-english.html')">English</button>
-    <button onclick="openPage('premium-bangla.html')">Bangla</button>
-    <button onclick="openPage('premium-mathematics.html')">Mathematics</button>
-    <button onclick="openPage('premium-skill.html')">Skill Development</button>
-    <button onclick="openPage('premium-stories.html')">Stories</button>
-  </div>  <footer>
-    <p><strong>About Us:</strong><br>
-    Nanhe Kahaniyaan ka maksad hai Bharat ke sabhi bacchon ko kam kharche me acchi, rochak aur manoranjak shiksha dena. Hum ek Virtual Play School hai jahan English, Hindi, Maths, Skill aur Kahaniyon ke madhyam se bachpan ko behtar banaya jata hai.<br><br>
-    <strong>Inquiry & Support:</strong> Contact: contactnanhekhaniya@gmail.com</p>
-  </footer>  <script>
-    const validPasswords = ["NANHE-1234-AZ", "NANHE-4321-BY"];
-    const masterPassword = "Biswanath@09";
-
-    function handlePremiumClick() {
-      const access = localStorage.getItem("premium_access");
-      const expiry = new Date(localStorage.getItem("premium_expiry"));
-      const today = new Date();
-
-      if (access === "granted" && today <= expiry) {
-        showPremiumTabs();
-      } else if (access === "granted" && today > expiry) {
-        document.getElementById("expiry-message").style.display = "block";
-        document.getElementById("renew-btn").style.display = "inline-block";
-      } else {
-        const input = prompt("Enter your premium password:");
-        validateAndGrant(input);
-      }
-    }
-
-    function renewAccess() {
-      const input = prompt("Enter your premium password to renew:");
-      validateAndGrant(input);
-    }
-
-    function validateAndGrant(input) {
-      if (validPasswords.includes(input) || input === masterPassword) {
-        localStorage.setItem("premium_access", "granted");
-        const expiryDate = new Date();
-        expiryDate.setDate(expiryDate.getDate() + 30);
-        localStorage.setItem("premium_expiry", expiryDate.toISOString());
-        alert("✅ Access granted to Premium section for 30 days");
-        document.getElementById("expiry-message").style.display = "none";
-        document.getElementById("renew-btn").style.display = "none";
-        showPremiumTabs();
-      } else {
-        alert("❌ Invalid password. Premium access denied.");
-      }
-    }
-
-    function showPremiumTabs() {
-      document.getElementById('premium-tabs').style.display = 'block';
-    }
-
-    function openPage(link) {
-      window.open(link, '_blank');
-    }
-  </script></body>
+<body>  <header>
+    <img src="logo.png" alt="Nanhe Kahaniyaan Logo">
+    <h1>Nanhe Kahaniyaan</h1>
+    <p>Premium Content – Choose Your Section</p>
+  </header>  <div class="subtabs">
+    <a href="hindi.html" class="subtab">📖 Hindi</a>
+    <a href="english.html" class="subtab">📘 English</a>
+    <a href="bangla.html" class="subtab">📗 বাংলা</a>
+    <a href="stories.html" class="subtab">📕 Stories</a>
+    <a href="mathematics.html" class="subtab">🧮 Mathematics</a>
+    <a href="skills.html" class="subtab">🛠️ Skill Development</a>
+  </div></body>
 </html>
