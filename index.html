@@ -1,6 +1,4 @@
-<!-- File: index.html -->
-<!DOCTYPE html>
-<html lang="en">
+<!-- File: index.html --><!DOCTYPE html><html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -125,32 +123,23 @@
     }
   </style>
 </head>
-<body>
-
-  <header>
+<body>  <header>
     Nanhe Kahaniyaan – Jahan har kahani sikhaye ek nayi baat
-  </header>
-
-  <div class="logo-section">
+  </header>  <div class="logo-section">
     <img src="Brand.png" alt="Logo" />
     <h3>Welcome to the zone of children's growth and development</h3>
-  </div>
-
-  <nav>
+  </div>  <nav>
     <button onclick="showMain('free')">Free Ebooks</button>
     <button onclick="showMain('premium')">Classroom</button>
-  </nav>
-
-  <div class="tabs" id="section-tabs" style="display:none">
+  </nav>  <div class="tabs" id="section-tabs">
     <button onclick="showSection('english')">English</button>
     <button onclick="showSection('hindi')">Hindi</button>
     <button onclick="showSection('math')">Mathematics</button>
     <button onclick="showSection('skill')">Skill Development</button>
     <button onclick="showSection('story')">Stories</button>
     <button onclick="showSection('bangla')">Bangla</button>
-  </div>
-
-  <div class="content-section" id="free">
+    <button onclick="showSection('quiz')">Quiz & Games</button>
+  </div>  <div class="content-section" id="free">
     <h2>🎥 Free Ebooks</h2>
     <iframe width="560" height="315" src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="Demo Video" allowfullscreen></iframe>
     <div class="media-links">
@@ -158,70 +147,56 @@
       <a href="#" target="_blank">📄 Free Worksheet 2</a>
       <a href="#" target="_blank">📄 Free Worksheet 3</a>
     </div>
-  </div>
-
-  <!-- Premium Content Sections -->
-  <div class="content-section" id="english">
+  </div>  <div class="content-section" id="english">
     <h2>English Section</h2>
     <iframe src="https://www.youtube.com/embed/tgbNymZ7vqY" allowfullscreen></iframe>
     <div class="media-links">
       <a href="https://example.com/english-demo.pdf" target="_blank">📄 Download PDF</a>
     </div>
-  </div>
-
-  <div class="content-section" id="hindi">
+  </div>  <div class="content-section" id="hindi">
     <h2>Hindi Section</h2>
     <iframe src="https://www.youtube.com/embed/4bnpKdL7a0o" allowfullscreen></iframe>
     <div class="media-links">
       <a href="https://example.com/hindi-demo.pdf" target="_blank">📄 Download PDF</a>
     </div>
-  </div>
-
-  <div class="content-section" id="math">
+  </div>  <div class="content-section" id="math">
     <h2>Mathematics Section</h2>
     <iframe src="https://www.youtube.com/embed/5kdD8qxwHgI" allowfullscreen></iframe>
     <div class="media-links">
       <a href="https://example.com/maths-demo.pdf" target="_blank">📄 Download PDF</a>
     </div>
-  </div>
-
-  <div class="content-section" id="skill">
+  </div>  <div class="content-section" id="skill">
     <h2>Skill Development Section</h2>
     <iframe src="https://www.youtube.com/embed/BnWcv9A19Qk" allowfullscreen></iframe>
     <div class="media-links">
       <a href="https://example.com/skill-demo.pdf" target="_blank">📄 Download PDF</a>
     </div>
-  </div>
-
-  <div class="content-section" id="story">
+  </div>  <div class="content-section" id="story">
     <h2>Stories Section</h2>
     <iframe src="https://www.youtube.com/embed/lTTajzrSkCw" allowfullscreen></iframe>
     <div class="media-links">
       <a href="https://example.com/story-demo.pdf" target="_blank">📄 Download PDF</a>
     </div>
-  </div>
-
-  <div class="content-section" id="bangla">
+  </div>  <div class="content-section" id="bangla">
     <h2>Bangla Section</h2>
     <iframe src="https://www.youtube.com/embed/nFJAmkUui4w" allowfullscreen></iframe>
     <div class="media-links">
       <a href="https://example.com/bangla-demo.pdf" target="_blank">📄 Download PDF</a>
     </div>
-  </div>
-
-  <footer>
+  </div>  <div class="content-section" id="quiz">
+    <h2>Quiz & Games</h2>
+    <iframe src="https://www.youtube.com/embed/2Vv-BfVoq4g" allowfullscreen></iframe>
+    <div class="media-links">
+      <a href="https://example.com/quiz-demo.pdf" target="_blank">📄 Quiz Practice Sheet</a>
+    </div>
+  </div>  <footer>
     <p><strong>About Us:</strong><br>
     Nanhe Kahaniyaan ka maksad hai Bharat ke sabhi bacchon ko kam kharche me acchi, rochak aur manoranjak shiksha dena. Hum ek Virtual Play School hai jahan English, Hindi, Maths, Skill aur Kahaniyon ke madhyam se bachpan ko behtar banaya jata hai.<br><br>
     <strong>Inquiry & Support:</strong> Contact: contactnanhekhaniyaan@gmail.com<br><br>
     <em>A Unit Of Bhanu Biswa Enterprise</em>
     </p>
-  </footer>
-
-  <script>
-    let currentMain = '';
-
+  </footer>  <script>
     function showMain(type) {
-      currentMain = type;
       if (type === 'free') {
         document.getElementById('section-tabs').style.display = 'none';
         hideAllSections();
@@ -241,7 +216,5 @@
       const sections = document.querySelectorAll('.content-section');
       sections.forEach(section => section.classList.remove('active'));
     }
-  </script>
-
-</body>
+  </script></body>
 </html>
