@@ -1,4 +1,4 @@
-<!-- index.html -->
+<!-- File: index.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -138,7 +138,7 @@
 
   <nav>
     <button onclick="showMain('free')">Free Ebooks</button>
-    <button onclick="showMain('Classroom')">Classroom</button>
+    <button onclick="showMain('premium')">Classroom</button>
   </nav>
 
   <div class="tabs" id="section-tabs" style="display:none">
@@ -160,7 +160,7 @@
     </div>
   </div>
 
-  <!-- Classroom Content Sections -->
+  <!-- Premium Content Sections -->
   <div class="content-section" id="english">
     <h2>English Section</h2>
     <iframe src="https://www.youtube.com/embed/tgbNymZ7vqY" allowfullscreen></iframe>
@@ -186,7 +186,7 @@
   </div>
 
   <div class="content-section" id="skill">
-    <h2>Skill Development & Quiz game</h2>
+    <h2>Skill Development Section</h2>
     <iframe src="https://www.youtube.com/embed/BnWcv9A19Qk" allowfullscreen></iframe>
     <div class="media-links">
       <a href="https://example.com/skill-demo.pdf" target="_blank">📄 Download PDF</a>
@@ -218,12 +218,15 @@
   </footer>
 
   <script>
+    let currentMain = '';
+
     function showMain(type) {
+      currentMain = type;
       if (type === 'free') {
         document.getElementById('section-tabs').style.display = 'none';
         hideAllSections();
         document.getElementById('free').classList.add('active');
-      } else if (type === 'Classroom) {
+      } else if (type === 'premium') {
         document.getElementById('section-tabs').style.display = 'flex';
         hideAllSections();
       }
