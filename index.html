@@ -1,7 +1,8 @@
-<!-- File: index.html --><!DOCTYPE html><html lang="en">
+<!DOCTYPE html>
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Nanhe Kahaniyaan - Jahan har kahani sikhaye ek nayi baat | A Unit Of Bhanu Biswa Enterprise</title>
   <link href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@400;700&display=swap" rel="stylesheet">
   <style>
@@ -42,7 +43,7 @@
       background: #0288d1;
     }
     .tabs {
-      display: flex;
+      display: none;
       justify-content: center;
       margin-top: 20px;
       flex-wrap: wrap;
@@ -121,17 +122,62 @@
       max-width: 100%;
       border-radius: 12px;
     }
+
+    /* Quiz Section Styling */
+    #quiz-box {
+      background: #ffffff;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+
+    .question {
+      font-size: 1.2em;
+      margin-bottom: 20px;
+      font-weight: bold;
+    }
+
+    .options button {
+      display: block;
+      width: 100%;
+      margin: 10px 0;
+      padding: 12px;
+      font-size: 1em;
+      background: #4caf50;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    .options button:hover {
+      background: #388e3c;
+    }
+
+    .result {
+      margin-top: 15px;
+      font-size: 1.1em;
+      color: #3f51b5;
+    }
   </style>
 </head>
-<body>  <header>
+<body>
+  <header>
     Nanhe Kahaniyaan – Jahan har kahani sikhaye ek nayi baat
-  </header>  <div class="logo-section">
+  </header>
+
+  <div class="logo-section">
     <img src="Brand.png" alt="Logo" />
     <h3>Welcome to the zone of children's growth and development</h3>
-  </div>  <nav>
+  </div>
+
+  <nav>
     <button onclick="showMain('free')">Free Ebooks</button>
     <button onclick="showMain('premium')">Classroom</button>
-  </nav>  <div class="tabs" id="section-tabs">
+  </nav>
+
+  <div class="tabs" id="section-tabs">
     <button onclick="showSection('english')">English</button>
     <button onclick="showSection('hindi')">Hindi</button>
     <button onclick="showSection('math')">Mathematics</button>
@@ -139,7 +185,9 @@
     <button onclick="showSection('story')">Stories</button>
     <button onclick="showSection('bangla')">Bangla</button>
     <button onclick="showSection('quiz')">Quiz & Games</button>
-  </div>  <div class="content-section" id="free">
+  </div>
+
+  <div class="content-section" id="free">
     <h2>🎥 Free Ebooks</h2>
     <iframe width="560" height="315" src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="Demo Video" allowfullscreen></iframe>
     <div class="media-links">
@@ -147,55 +195,74 @@
       <a href="#" target="_blank">📄 Free Worksheet 2</a>
       <a href="#" target="_blank">📄 Free Worksheet 3</a>
     </div>
-  </div>  <div class="content-section" id="english">
+  </div>
+
+  <div class="content-section" id="english">
     <h2>English Section</h2>
     <iframe src="https://www.youtube.com/embed/tgbNymZ7vqY" allowfullscreen></iframe>
     <div class="media-links">
       <a href="https://example.com/english-demo.pdf" target="_blank">📄 Download PDF</a>
     </div>
-  </div>  <div class="content-section" id="hindi">
+  </div>
+
+  <div class="content-section" id="hindi">
     <h2>Hindi Section</h2>
     <iframe src="https://www.youtube.com/embed/4bnpKdL7a0o" allowfullscreen></iframe>
     <div class="media-links">
       <a href="https://example.com/hindi-demo.pdf" target="_blank">📄 Download PDF</a>
     </div>
-  </div>  <div class="content-section" id="math">
+  </div>
+
+  <div class="content-section" id="math">
     <h2>Mathematics Section</h2>
     <iframe src="https://www.youtube.com/embed/5kdD8qxwHgI" allowfullscreen></iframe>
     <div class="media-links">
       <a href="https://example.com/maths-demo.pdf" target="_blank">📄 Download PDF</a>
     </div>
-  </div>  <div class="content-section" id="skill">
+  </div>
+
+  <div class="content-section" id="skill">
     <h2>Skill Development Section</h2>
     <iframe src="https://www.youtube.com/embed/BnWcv9A19Qk" allowfullscreen></iframe>
     <div class="media-links">
       <a href="https://example.com/skill-demo.pdf" target="_blank">📄 Download PDF</a>
     </div>
-  </div>  <div class="content-section" id="story">
+  </div>
+
+  <div class="content-section" id="story">
     <h2>Stories Section</h2>
     <iframe src="https://www.youtube.com/embed/lTTajzrSkCw" allowfullscreen></iframe>
     <div class="media-links">
       <a href="https://example.com/story-demo.pdf" target="_blank">📄 Download PDF</a>
     </div>
-  </div>  <div class="content-section" id="bangla">
+  </div>
+
+  <div class="content-section" id="bangla">
     <h2>Bangla Section</h2>
     <iframe src="https://www.youtube.com/embed/nFJAmkUui4w" allowfullscreen></iframe>
     <div class="media-links">
       <a href="https://example.com/bangla-demo.pdf" target="_blank">📄 Download PDF</a>
     </div>
-  </div>  <div class="content-section" id="quiz">
-    <h2>Quiz & Games</h2>
-    <iframe src="https://www.youtube.com/embed/2Vv-BfVoq4g" allowfullscreen></iframe>
-    <div class="media-links">
-      <a href="https://example.com/quiz-demo.pdf" target="_blank">📄 Quiz Practice Sheet</a>
+  </div>
+
+  <div class="content-section" id="quiz">
+    <h2>🧠 Quiz & Games</h2>
+    <div id="quiz-box">
+      <div class="question" id="question">Loading question...</div>
+      <div class="options" id="options"></div>
+      <div class="result" id="result"></div>
     </div>
-  </div>  <footer>
+  </div>
+
+  <footer>
     <p><strong>About Us:</strong><br>
     Nanhe Kahaniyaan ka maksad hai Bharat ke sabhi bacchon ko kam kharche me acchi, rochak aur manoranjak shiksha dena. Hum ek Virtual Play School hai jahan English, Hindi, Maths, Skill aur Kahaniyon ke madhyam se bachpan ko behtar banaya jata hai.<br><br>
     <strong>Inquiry & Support:</strong> Contact: contactnanhekhaniyaan@gmail.com<br><br>
     <em>A Unit Of Bhanu Biswa Enterprise</em>
     </p>
-  </footer>  <script>
+  </footer>
+
+  <script>
     function showMain(type) {
       if (type === 'free') {
         document.getElementById('section-tabs').style.display = 'none';
@@ -216,5 +283,81 @@
       const sections = document.querySelectorAll('.content-section');
       sections.forEach(section => section.classList.remove('active'));
     }
-  </script></body>
+
+    // Quiz Logic
+    const quizData = [
+      {
+        question: "1️⃣ What is the capital of India?",
+        options: ["Mumbai", "New Delhi", "Kolkata", "Jaipur"],
+        answer: "New Delhi"
+      },
+      {
+        question: "2️⃣ How many colors in a rainbow?",
+        options: ["5", "6", "7", "8"],
+        answer: "7"
+      },
+      {
+        question: "3️⃣ Which animal is known as the King of Jungle?",
+        options: ["Tiger", "Elephant", "Lion", "Leopard"],
+        answer: "Lion"
+      },
+      {
+        question: "4️⃣ Which shape has 4 equal sides?",
+        options: ["Circle", "Triangle", "Rectangle", "Square"],
+        answer: "Square"
+      },
+      {
+        question: "5️⃣ Which planet is closest to the sun?",
+        options: ["Venus", "Mars", "Mercury", "Earth"],
+        answer: "Mercury"
+      }
+    ];
+
+    let quizIndex = 0;
+
+    function loadQuiz() {
+      if (quizIndex >= quizData.length) {
+        document.getElementById("question").innerText = "🎉 Quiz Completed!";
+        document.getElementById("options").innerHTML = "";
+        document.getElementById("result").innerText = "Thanks for playing!";
+        return;
+      }
+
+      const q = quizData[quizIndex];
+      document.getElementById("question").innerText = q.question;
+      const optionsDiv = document.getElementById("options");
+      optionsDiv.innerHTML = "";
+
+      q.options.forEach(option => {
+        const btn = document.createElement("button");
+        btn.innerText = option;
+        btn.onclick = () => checkQuizAnswer(option);
+        optionsDiv.appendChild(btn);
+      });
+
+      document.getElementById("result").innerText = "";
+    }
+
+    function checkQuizAnswer(selected) {
+      const correct = quizData[quizIndex].answer;
+      const result = document.getElementById("result");
+
+      if (selected === correct) {
+        result.innerText = "✅ Correct!";
+      } else {
+        result.innerText = `❌ Wrong! Correct answer is: ${correct}`;
+      }
+
+      setTimeout(() => {
+        quizIndex++;
+        loadQuiz();
+      }, 1500);
+    }
+
+    document.querySelector('button[onclick="showSection(\'quiz\')"]').addEventListener("click", () => {
+      quizIndex = 0;
+      loadQuiz();
+    });
+  </script>
+</body>
 </html>
