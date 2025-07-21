@@ -37,12 +37,13 @@
       color: white;
       border-radius: 10px;
       transition: background 0.3s ease;
+      box-shadow: 2px 4px 10px rgba(0,0,0,0.1);
     }
     nav button:hover {
       background: #0288d1;
     }
     .tabs {
-      display: none;
+      display: flex;
       justify-content: center;
       margin-top: 20px;
       flex-wrap: wrap;
@@ -57,6 +58,7 @@
       color: #000;
       border-radius: 6px;
       transition: background 0.3s ease;
+      box-shadow: 1px 3px 6px rgba(0,0,0,0.08);
     }
     .tabs button:hover {
       background: #fbc02d;
@@ -74,6 +76,27 @@
     .active {
       display: block;
     }
+    .media-links {
+      margin-top: 20px;
+    }
+    .media-links a {
+      display: block;
+      margin: 8px auto;
+      width: fit-content;
+      text-decoration: none;
+      background: #66bb6a;
+      color: white;
+      padding: 10px 15px;
+      border-radius: 6px;
+      transition: background 0.3s ease;
+    }
+    .media-links a:hover {
+      background: #388e3c;
+    }
+    iframe {
+      max-width: 100%;
+      border-radius: 12px;
+    }
     footer {
       background: #3f51b5;
       color: white;
@@ -82,18 +105,23 @@
       font-size: 0.9em;
       margin-top: 50px;
     }
-    .media-links a {
-      display: block;
-      margin: 10px 0;
-      text-decoration: none;
-      background: #66bb6a;
-      color: white;
-      padding: 10px 15px;
-      border-radius: 6px;
+    .logo-section {
+      text-align: center;
+      margin: 30px auto 10px;
     }
-    iframe {
-      max-width: 100%;
-      border-radius: 12px;
+    .logo-section img {
+      width: 100px;
+      height: auto;
+      animation: bounce 2s infinite;
+    }
+    .logo-section h3 {
+      font-size: 1.3em;
+      margin-top: 10px;
+      color: #444;
+    }
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
     }
   </style>
 </head>
@@ -103,110 +131,122 @@
     Nanhe Kahaniyaan – Jahan har kahani sikhaye ek nayi baat
   </header>
 
+  <div class="logo-section">
+    <img src="Brand.png" alt="Logo" />
+    <h3>Welcome to the zone of children's growth and development</h3>
+  </div>
+
   <nav>
-    <button onclick="showMain('ebooks')">📚 Free Ebooks</button>
+    <button onclick="showMain('free')">📚 Free Ebooks</button>
     <button onclick="showMain('classroom')">🏫 Classroom</button>
   </nav>
 
-  <!-- EBOOKS SECTION -->
-  <div class="content-section" id="ebooks">
+  <div class="tabs" id="section-tabs" style="display:none;">
+    <button onclick="showSection('hindi')">Hindi</button>
+    <button onclick="showSection('english')">English</button>
+    <button onclick="showSection('math')">Mathematics</button>
+    <button onclick="showSection('bangla')">Bangla</button>
+    <button onclick="showSection('gk')">General Knowledge</button>
+    <button onclick="showSection('skill')">Skill Development</button>
+    <button onclick="showSection('story')">Stories</button>
+    <button onclick="showSection('quiz')">Quiz & Games</button>
+  </div>
+
+  <div class="content-section" id="free">
     <h2>🎥 Free Ebooks</h2>
-    <iframe width="560" height="315" src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="Free Ebook Demo" allowfullscreen></iframe>
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="Demo Video" allowfullscreen></iframe>
     <div class="media-links">
-      <a href="#">📄 Worksheet 1</a>
-      <a href="#">📄 Worksheet 2</a>
-      <a href="#">📄 Worksheet 3</a>
+      <a href="#" target="_blank">📄 Free Worksheet 1</a>
+      <a href="#" target="_blank">📄 Free Worksheet 2</a>
+      <a href="#" target="_blank">📄 Free Worksheet 3</a>
     </div>
   </div>
 
-  <!-- CLASSROOM TABS -->
-  <div class="tabs" id="classroom-tabs">
-    <button onclick="showSection('hindi')">Hindi</button>
-    <button onclick="showSection('english')">English</button>
-    <button onclick="showSection('bangla')">Bangla</button>
-    <button onclick="showSection('maths')">Maths</button>
-    <button onclick="showSection('skill')">Skill</button>
-    <button onclick="showSection('stories')">Stories</button>
-    <button onclick="showSection('quiz')">Quiz</button>
-  </div>
-
-  <!-- CLASSROOM SUBSECTIONS -->
+  <!-- Classroom Sections -->
   <div class="content-section" id="hindi">
-    <h2>📺 Hindi Video Lessons</h2>
-    <iframe src="https://www.youtube.com/embed/xyz123" allowfullscreen></iframe>
+    <h2>📕 Hindi Section</h2>
+    <iframe src="https://www.youtube.com/embed/4bnpKdL7a0o" allowfullscreen></iframe>
     <div class="media-links">
-      <a href="#">📄 Hindi Worksheet</a>
+      <a href="#">📄 Hindi Practice PDF</a>
     </div>
   </div>
 
   <div class="content-section" id="english">
-    <h2>📘 English Video Lessons</h2>
-    <iframe src="https://www.youtube.com/embed/abc456" allowfullscreen></iframe>
+    <h2>📘 English Section</h2>
+    <iframe src="https://www.youtube.com/embed/tgbNymZ7vqY" allowfullscreen></iframe>
     <div class="media-links">
-      <a href="#">📄 English Worksheet</a>
+      <a href="#">📄 English Practice PDF</a>
+    </div>
+  </div>
+
+  <div class="content-section" id="math">
+    <h2>📐 Mathematics Section</h2>
+    <iframe src="https://www.youtube.com/embed/5kdD8qxwHgI" allowfullscreen></iframe>
+    <div class="media-links">
+      <a href="#">📄 Maths Practice PDF</a>
     </div>
   </div>
 
   <div class="content-section" id="bangla">
-    <h2>🔤 Bangla Video Lessons</h2>
-    <iframe src="https://www.youtube.com/embed/bng567" allowfullscreen></iframe>
+    <h2>🔤 Bangla Section</h2>
+    <iframe src="https://www.youtube.com/embed/nFJAmkUui4w" allowfullscreen></iframe>
     <div class="media-links">
-      <a href="#">📄 Bangla Worksheet</a>
+      <a href="#">📄 Bangla Practice PDF</a>
     </div>
   </div>
 
-  <div class="content-section" id="maths">
-    <h2>🧮 Maths Learning</h2>
-    <iframe src="https://www.youtube.com/embed/mth678" allowfullscreen></iframe>
+  <div class="content-section" id="gk">
+    <h2>🌍 General Knowledge Section</h2>
+    <iframe src="https://www.youtube.com/embed/BnWcv9A19Qk" allowfullscreen></iframe>
     <div class="media-links">
-      <a href="#">📄 Maths Worksheet</a>
+      <a href="#">📄 GK Practice PDF</a>
     </div>
   </div>
 
   <div class="content-section" id="skill">
-    <h2>🎨 Skill Development</h2>
-    <iframe src="https://www.youtube.com/embed/skill001" allowfullscreen></iframe>
+    <h2>🧠 Skill Development Section</h2>
+    <iframe src="https://www.youtube.com/embed/BnWcv9A19Qk" allowfullscreen></iframe>
     <div class="media-links">
-      <a href="#">📄 Skill Activity</a>
+      <a href="#">📄 Skill Worksheet</a>
     </div>
   </div>
 
-  <div class="content-section" id="stories">
-    <h2>📖 Moral Stories</h2>
-    <iframe src="https://www.youtube.com/embed/story999" allowfullscreen></iframe>
+  <div class="content-section" id="story">
+    <h2>📖 Stories Section</h2>
+    <iframe src="https://www.youtube.com/embed/lTTajzrSkCw" allowfullscreen></iframe>
     <div class="media-links">
-      <a href="#">📄 Story PDF</a>
+      <a href="#">📄 Story Worksheet</a>
     </div>
   </div>
 
   <div class="content-section" id="quiz">
     <h2>🧠 Quiz & Games</h2>
     <div class="media-links">
-      <a href="quiz/math-quiz.html" target="_blank">🧮 Maths Quiz</a>
-      <a href="quiz/hindi-quiz.html" target="_blank">📝 Hindi Quiz</a>
-      <a href="quiz/english-quiz.html" target="_blank">📘 English Quiz</a>
-      <a href="quiz/bangla-quiz.html" target="_blank">🔤 Bangla Quiz</a>
-      <a href="quiz/gk-quiz.html" target="_blank">🌍 General Knowledge</a>
+      <a href="quiz/hindi-quiz.html" target="_blank">📝 Hindi Quiz (50 Questions)</a>
+      <a href="quiz/english-quiz.html" target="_blank">📘 English Quiz (50 Questions)</a>
+      <a href="quiz/math-quiz.html" target="_blank">📐 Math Quiz (50 Questions)</a>
+      <a href="quiz/bangla-quiz.html" target="_blank">🔤 Bangla Quiz (৫০ প্রশ্ন)</a>
+      <a href="quiz/gk-quiz.html" target="_blank">🌍 General Knowledge Quiz (50 Questions)</a>
     </div>
   </div>
 
   <footer>
     <p><strong>About Us:</strong><br>
-    Nanhe Kahaniyaan aims to make learning joyful and affordable for every child. We offer free educational content through stories, rhymes, worksheets, and skill activities.<br><br>
-    <strong>Contact:</strong> contactnanhekahaniyaan@gmail.com<br>
-    <em>A Unit of Bhanu Biswa Enterprise</em>
+    Nanhe Kahaniyaan ka maksad hai Bharat ke sabhi bacchon ko kam kharche me acchi, rochak aur manoranjak shiksha dena. Hum ek Virtual Play School hai jahan English, Hindi, Maths, Skill aur Kahaniyon ke madhyam se bachpan ko behtar banaya jata hai.<br><br>
+    <strong>Inquiry & Support:</strong> Contact: contactnanhekhaniyaan@gmail.com<br><br>
+    <em>A Unit Of Bhanu Biswa Enterprise</em>
     </p>
   </footer>
 
   <script>
     function showMain(type) {
-      hideAllSections();
-      document.getElementById('classroom-tabs').style.display = 'none';
-
-      if (type === 'ebooks') {
-        document.getElementById('ebooks').classList.add('active');
+      if (type === 'free') {
+        document.getElementById('section-tabs').style.display = 'none';
+        hideAllSections();
+        document.getElementById('free').classList.add('active');
       } else if (type === 'classroom') {
-        document.getElementById('classroom-tabs').style.display = 'flex';
+        document.getElementById('section-tabs').style.display = 'flex';
+        hideAllSections();
       }
     }
 
