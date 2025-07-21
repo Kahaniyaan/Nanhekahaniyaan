@@ -1,4 +1,4 @@
-<!-- File: index.html -->
+<!-- index.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -138,7 +138,7 @@
 
   <nav>
     <button onclick="showMain('free')">Free Ebooks</button>
-    <button onclick="handlePremiumClick()">Premium</button>
+    <button onclick="showMain('premium')">Premium</button>
   </nav>
 
   <div class="tabs" id="section-tabs" style="display:none">
@@ -218,10 +218,7 @@
   </footer>
 
   <script>
-    let currentMain = '';
-
     function showMain(type) {
-      currentMain = type;
       if (type === 'free') {
         document.getElementById('section-tabs').style.display = 'none';
         hideAllSections();
@@ -240,48 +237,6 @@
     function hideAllSections() {
       const sections = document.querySelectorAll('.content-section');
       sections.forEach(section => section.classList.remove('active'));
-    }
-
-    async function handlePremiumClick() {
-      const access = localStorage.getItem("premium_access");
-      const expiry = new Date(localStorage.getItem("premium_expiry"));
-      const today = new Date();
-
-      if (access === "granted" && today <= expiry) {
-        showMain('premium');
-        return;
-      } else if (access === "granted" && today > expiry) {
-        alert("❗ Aapka Premium access expire ho gaya hai. Kripya naya subscription lijiye.");
-        return;
-      }
-
-      const input = prompt("Enter your premium password:");
-      if (input) {
-        validatePassword(input);
-      }
-    }
-
-    async function validatePassword(password) {
-      try {
-        const res = await fetch("https://script.google.com/macros/s/AKfycby-BYsgIjDZdd0Yl0N9h3f3D1VhrstzITCdp_6D7Jd4Sr6FRPktOi9yB-qKH5mhSWfLnw/exec?password=" + encodeURIComponent(password) + "&device=" + encodeURIComponent(navigator.userAgent));
-        const data = await res.json();
-
-        if (data.valid) {
-          localStorage.setItem("premium_access", "granted");
-          const expiryDate = new Date();
-          expiryDate.setDate(expiryDate.getDate() + 30);
-          localStorage.setItem("premium_expiry", expiryDate.toISOString());
-          alert("✅ Access granted to Premium section for 30 days");
-          showMain('premium');
-        } else if (data.alreadyUsed) {
-          alert("⚠️ This password is already active on another device.");
-        } else {
-          alert("❌ Invalid or expired password.");
-        }
-      } catch (err) {
-        console.error("Error:", err);
-        alert("❌ Server error. Please try again later.");
-      }
     }
   </script>
 
