@@ -1,69 +1,119 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="bn">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>🔤 বাংলা কুইজ</title>
+  <meta charset="UTF-8">
+  <title>বাংলা কুইজ - Nanhe Kahaniyaan</title>
   <style>
-    body { font-family: 'Comic Neue', cursive; background: #fff3e0; text-align: center; padding: 0; margin: 0; }
-    header { background: #ff9800; color: white; padding: 20px; font-size: 1.5em; font-weight: bold; }
-    .quiz-container { max-width: 600px; margin: 40px auto; background: #ffffff; padding: 30px; box-shadow: 0 0 15px rgba(0,0,0,0.15); border-radius: 10px; }
-    .question { font-size: 1.2em; margin-bottom: 20px; }
-    .options button { display: block; width: 100%; margin: 10px 0; padding: 12px; font-size: 1em; background: #4caf50; color: white; border: none; border-radius: 8px; cursor: pointer; transition: background 0.3s ease; }
-    .options button:hover { background: #388e3c; }
-    .result { margin-top: 20px; font-weight: bold; font-size: 1.1em; color: #3f51b5; }
-    #next-btn, #reset-btn { margin: 20px 10px; padding: 10px 20px; font-size: 1em; }
+    body {
+      font-family: 'Siyam Rupali', sans-serif;
+      background-color: #fff8e1;
+      padding: 20px;
+      line-height: 1.6;
+    }
+    h2 {
+      text-align: center;
+      color: #4e342e;
+    }
+    #quiz-box {
+      max-width: 750px;
+      margin: auto;
+      background: #ffffff;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    .question {
+      font-weight: bold;
+      font-size: 1.2em;
+    }
+    .option {
+      margin: 10px 0;
+    }
+    button {
+      margin: 10px 5px;
+      padding: 10px 15px;
+      font-size: 16px;
+      background: #ff7043;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+    button:hover {
+      background: #d84315;
+    }
+    #result {
+      font-size: 1.3em;
+      font-weight: bold;
+      color: #2e7d32;
+      text-align: center;
+      margin-top: 20px;
+    }
   </style>
 </head>
 <body>
-  <header>🔤 বাংলা কুইজ</header>
-  <div class="quiz-container">
-    <div class="question" id="question">Loading question...</div>
-    <div class="options" id="options"></div>
-    <div class="result" id="result"></div>
-    <button id="next-btn" onclick="nextQuestion()">Next</button>
-    <button id="reset-btn" onclick="resetQuiz()">Reset</button>
+  <h2>বাংলা কুইজ - Nanhe Kahaniyaan</h2>
+  <div id="quiz-box">
+    <div id="question-box"></div>
+    <div id="options-box"></div>
+    <button onclick="nextQuestion()">পরবর্তী</button>
+    <button onclick="resetQuiz()">রিসেট</button>
+    <div id="result"></div>
   </div>
 
   <script>
-    const quiz = Array.from({length: 50}, (_, i) => ({ question: `Bangla Question ${i+1}?`, options: ['Option A', 'Option B', 'Option C', 'Option D'], answer: 'Option A' }));
-    let current = 0, score = 0;
+    const quiz = [
+      { q: "১. বাংলাদেশের জাতীয় ফুল কোনটি?", options: ["গোলাপ", "শাপলা", "রজনীগন্ধা", "চামেলি"], answer: "শাপলা" },
+      { q: "২. ‘আম’ কোন ধরণের ফল?", options: ["শাক", "মূল", "ফল", "দানাশস্য"], answer: "ফল" },
+      { q: "৩. সপ্তাহে কয়টি দিন?", options: ["৫", "৬", "৭", "৮"], answer: "৭" },
+      { q: "৪. বাংলা বর্ণমালায় মোট কতটি স্বরবর্ণ?", options: ["৭", "১১", "১০", "১২"], answer: "১১" },
+      { q: "৫. বাংলাদেশের রাজধানী কোথায়?", options: ["চট্টগ্রাম", "সিলেট", "ঢাকা", "খুলনা"], answer: "ঢাকা" },
+      { q: "৬. রাতের আকাশে কী জ্বলে?", options: ["সূর্য", "চাঁদ", "ফানুস", "বাতাস"], answer: "চাঁদ" },
+      { q: "৭. স্কুলে আমরা কী করি?", options: ["ঘুমাই", "খাই", "পড়াশোনা করি", "খেলাধুলা"], answer: "পড়াশোনা করি" },
+      { q: "৮. বাংলা নতুন বছর শুরু হয় কখন?", options: ["বৈশাখ", "জ্যৈষ্ঠ", "ফাল্গুন", "মাঘ"], answer: "বৈশাখ" },
+      { q: "৯. ‘আমার সোনার বাংলা’ কে লিখেছেন?", options: ["লালন", "কাজী নজরুল", "রবীন্দ্রনাথ ঠাকুর", "হুমায়ুন আহমেদ"], answer: "রবীন্দ্রনাথ ঠাকুর" },
+      { q: "১০. কুকুর কী ধরণের প্রাণী?", options: ["পশু", "পাখি", "গাছ", "ফল"], answer: "পশু" },
+    ];
 
-    function showQuestion() {
-      const q = quiz[current];
-      document.getElementById("question").innerText = q.question;
-      const optionsDiv = document.getElementById("options");
-      optionsDiv.innerHTML = "";
-      q.options.forEach(opt => {
-        const btn = document.createElement("button");
-        btn.innerText = opt;
-        btn.onclick = () => checkAnswer(opt);
-        optionsDiv.appendChild(btn);
+    while (quiz.length < 50) {
+      let n = quiz.length + 1;
+      quiz.push({
+        q: `${n}. ডেমো প্রশ্ন ${n}`,
+        options: ["উত্তর A", "উত্তর B", "উত্তর C", "উত্তর D"],
+        answer: "উত্তর A"
       });
     }
 
-    function checkAnswer(selected) {
-      if (selected === quiz[current].answer) score++;
-      document.getElementById("result").innerText = selected === quiz[current].answer ? "✅ Correct!" : `❌ Wrong! Correct: ${quiz[current].answer}`;
+    let currentQuestion = 0;
+    let score = 0;
+
+    function showQuestion() {
+      const q = quiz[currentQuestion];
+      document.getElementById("question-box").innerHTML = `<div class="question">${q.q}</div>`;
+      let optionsHtml = '';
+      q.options.forEach(opt => {
+        optionsHtml += `<div class="option"><input type="radio" name="option" value="${opt}"> ${opt}</div>`;
+      });
+      document.getElementById("options-box").innerHTML = optionsHtml;
     }
 
     function nextQuestion() {
-      current++;
-      document.getElementById("result").innerText = "";
-      if (current < quiz.length) showQuestion();
-      else showFinalScore();
+      const selected = document.querySelector('input[name="option"]:checked');
+      if (selected && selected.value === quiz[currentQuestion].answer) {
+        score++;
+      }
+      currentQuestion++;
+      if (currentQuestion < quiz.length) {
+        showQuestion();
+      } else {
+        document.getElementById("quiz-box").innerHTML = `<div id="result">আপনার স্কোর: ${score} / ${quiz.length}</div><br><button onclick="resetQuiz()">রিসেট কুইজ</button>`;
+      }
     }
 
     function resetQuiz() {
-      current = 0; score = 0;
-      document.getElementById("result").innerText = "";
-      showQuestion();
-    }
-
-    function showFinalScore() {
-      document.getElementById("question").innerText = "🎉 Quiz Completed!";
-      document.getElementById("options").innerHTML = "";
-      document.getElementById("result").innerText = `Your score: ${score} / 50`;
+      currentQuestion = 0;
+      score = 0;
+      location.reload();
     }
 
     showQuestion();
