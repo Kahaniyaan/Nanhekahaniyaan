@@ -3,227 +3,107 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Nanhe Kahaniyaan - Jahan har kahani sikhaye ek nayi baat | A Unit Of Bhanu Biswa Enterprise</title>
-  <link href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@400;700&display=swap" rel="stylesheet">
+  <title>Nanhe Kahaniyaan</title>
   <style>
     body {
-      font-family: 'Comic Neue', cursive;
+      font-family: Arial, sans-serif;
+      background-color: #f6f6f6;
       margin: 0;
       padding: 0;
-      background: #fff8e1;
     }
     header {
-      background: #ff9800;
-      color: #fff;
-      padding: 20px;
+      background-color: #ffb703;
+      padding: 1rem;
       text-align: center;
-      font-size: 1.6em;
-      font-weight: bold;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+      color: white;
     }
     nav {
       display: flex;
       justify-content: center;
-      margin: 20px 0;
+      background-color: #023047;
       flex-wrap: wrap;
     }
     nav button {
-      margin: 10px;
-      padding: 12px 24px;
-      font-size: 1em;
-      cursor: pointer;
+      padding: 10px 20px;
       border: none;
-      background: #29b6f6;
+      background-color: #023047;
       color: white;
-      border-radius: 10px;
-      transition: background 0.3s ease;
-      box-shadow: 2px 4px 10px rgba(0,0,0,0.1);
+      font-size: 16px;
+      cursor: pointer;
+      margin: 5px;
     }
     nav button:hover {
-      background: #0288d1;
-    }
-    .tabs {
-      display: none;
-      justify-content: center;
-      margin-top: 20px;
-      flex-wrap: wrap;
-    }
-    .tabs button {
-      margin: 8px;
-      padding: 10px 20px;
-      font-size: 0.95em;
-      cursor: pointer;
-      border: none;
-      background: #ffd54f;
-      color: #000;
-      border-radius: 6px;
-      transition: background 0.3s ease;
-      box-shadow: 1px 3px 6px rgba(0,0,0,0.08);
-    }
-    .tabs button:hover {
-      background: #fbc02d;
+      background-color: #219ebc;
     }
     .content-section {
       display: none;
       padding: 20px;
-      background: #ffffff;
-      max-width: 800px;
-      margin: auto;
-      margin-top: 20px;
-      box-shadow: 0 0 15px rgba(0,0,0,0.15);
-      border-radius: 12px;
     }
     .active {
       display: block;
     }
-    footer {
-      background: #3f51b5;
-      color: white;
-      padding: 20px;
-      text-align: center;
-      font-size: 0.9em;
-      margin-top: 50px;
-    }
-    .logo-section {
-      text-align: center;
-      margin: 30px auto 10px;
-    }
-    .logo-section img {
-      width: 100px;
-      height: auto;
-      animation: bounce 2s infinite;
-    }
-    .logo-section h3 {
-      font-size: 1.3em;
-      margin-top: 10px;
-      color: #444;
-    }
-    @keyframes bounce {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-10px); }
-    }
-    .media-links {
-      margin-top: 20px;
-    }
-    .media-links a {
-      display: inline-block;
-      margin: 5px 10px;
-      text-decoration: none;
-      background: #66bb6a;
-      color: white;
-      padding: 10px 15px;
-      border-radius: 6px;
-      transition: background 0.3s ease;
-    }
-    .media-links a:hover {
-      background: #388e3c;
-    }
     iframe {
-      max-width: 100%;
-      border-radius: 12px;
+      width: 100%;
+      border: none;
+      background: white;
     }
   </style>
 </head>
 <body>
-  <header>Nanhe Kahaniyaan – Jahan har kahani sikhaye ek nayi baat</header>
-
-  <div class="logo-section">
-    <img src="Brand.png" alt="Logo" />
-    <h3>Welcome to the zone of children's growth and development</h3>
-  </div>
+  <header>
+    <h1>Nanhe Kahaniyaan</h1>
+    <p>Jahan har kahani sikhaye ek nayi baat</p>
+  </header>
 
   <nav>
-    <button onclick="showMain('free')">Free Ebooks</button>
-    <button onclick="showMain('premium')">Classroom</button>
+    <button onclick="showSection('stories')">Stories</button>
+    <button onclick="showSection('classroom')">Classroom</button>
+    <button onclick="showSection('skills')">Skill Zone</button>
   </nav>
 
-  <div class="tabs" id="section-tabs">
-    <button onclick="showSection('english')">English</button>
-    <button onclick="showSection('hindi')">Hindi</button>
-    <button onclick="showSection('math')">Mathematics</button>
-    <button onclick="showSection('skill')">Skill Development</button>
-    <button onclick="showSection('story')">Stories</button>
-    <button onclick="showSection('bangla')">Bangla</button>
-    <button onclick="showSection('quiz')">Quiz & Games</button>
-  </div>
-
-  <div class="content-section" id="free">
-    <h2>🎥 Free Ebooks</h2>
-    <iframe width="560" height="315" src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="Demo Video" allowfullscreen></iframe>
-    <div class="media-links">
-      <a href="#" target="_blank">📄 Free Worksheet 1</a>
-      <a href="#" target="_blank">📄 Free Worksheet 2</a>
-      <a href="#" target="_blank">📄 Free Worksheet 3</a>
-    </div>
-  </div>
-
-  <div class="content-section" id="english">
-    <h2>English Section</h2>
-    <iframe src="English.html" height="400"></iframe>
-  </div>
-
-  <div class="content-section" id="hindi">
-    <h2>Hindi Section</h2>
-    <iframe src="hindi.html" height="400"></iframe>
-  </div>
-
-  <div class="content-section" id="math">
-    <h2>Mathematics Section</h2>
-    <iframe src="math.html" height="400"></iframe>
-  </div>
-
-  <div class="content-section" id="skill">
-    <h2>Skill Development Section</h2>
-    <iframe src="skil.html" height="400"></iframe>
-  </div>
-
-  <div class="content-section" id="story">
-    <h2>Stories Section</h2>
+  <!-- STORIES -->
+  <div class="content-section" id="stories">
+    <h2>Stories</h2>
     <iframe src="Stories.html" height="400"></iframe>
   </div>
 
-  <div class="content-section" id="bangla">
-    <h2>Bangla Section</h2>
-    <iframe src="bangla.html" height="400"></iframe>
+  <!-- CLASSROOM -->
+  <div class="content-section" id="classroom">
+    <h2>Classroom Zone</h2>
+    <nav>
+      <button onclick="showSubSection('english')">English</button>
+      <button onclick="showSubSection('hindi')">Hindi</button>
+      <button onclick="showSubSection('math')">Math</button>
+      <button onclick="showSubSection('quiz')">Quiz & Games</button>
+    </nav>
+    <div id="english" class="sub-section"><iframe src="English.html" height="400"></iframe></div>
+    <div id="hindi" class="sub-section"><iframe src="hindi.html" height="400"></iframe></div>
+    <div id="math" class="sub-section"><iframe src="math.html" height="400"></iframe></div>
+    <div id="quiz" class="sub-section"><iframe src="quiz.html" height="400"></iframe></div>
   </div>
 
-  <div class="content-section" id="quiz">
-    <h2>Quiz & Games</h2>
-    <iframe src="quiz.html" height="400"></iframe>
-    <div class="media-links">
-      <a href="https://example.com/quiz-demo.pdf" target="_blank">📄 Quiz Practice Sheet</a>
-    </div>
+  <!-- SKILLS -->
+  <div class="content-section" id="skills">
+    <h2>Skill Zone</h2>
+    <iframe src="skil.html" height="400"></iframe>
   </div>
-
-  <footer>
-    <p><strong>About Us:</strong><br>
-      Nanhe Kahaniyaan ka maksad hai Bharat ke sabhi bacchon ko kam kharche me acchi, rochak aur manoranjak shiksha dena. Hum ek Virtual Play School hai jahan English, Hindi, Maths, Skill aur Kahaniyon ke madhyam se bachpan ko behtar banaya jata hai.<br><br>
-      <strong>Inquiry & Support:</strong> Contact: contactnanhekhaniyaan@gmail.com<br><br>
-      <em>A Unit Of Bhanu Biswa Enterprise</em>
-    </p>
-  </footer>
 
   <script>
-    function showMain(type) {
-      if (type === 'free') {
-        document.getElementById('section-tabs').style.display = 'none';
-        hideAllSections();
-        document.getElementById('free').classList.add('active');
-      } else if (type === 'premium') {
-        document.getElementById('section-tabs').style.display = 'flex';
-        hideAllSections();
-      }
-    }
-
-    function showSection(sectionId) {
-      hideAllSections();
-      document.getElementById(sectionId).classList.add('active');
-    }
-
-    function hideAllSections() {
+    function showSection(id) {
       const sections = document.querySelectorAll('.content-section');
       sections.forEach(section => section.classList.remove('active'));
+      document.getElementById(id).classList.add('active');
     }
+
+    function showSubSection(id) {
+      const subs = document.querySelectorAll('.sub-section');
+      subs.forEach(sub => sub.style.display = 'none');
+      document.getElementById(id).style.display = 'block';
+    }
+
+    // Show Stories by default
+    showSection('stories');
+    showSubSection('english');
   </script>
 </body>
 </html>
