@@ -1,69 +1,118 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>🌍 General Knowledge Quiz</title>
+  <meta charset="UTF-8">
+  <title>GK Quiz - Nanhe Kahaniyaan</title>
   <style>
-    body { font-family: 'Comic Neue', cursive; background: #fff3e0; text-align: center; padding: 0; margin: 0; }
-    header { background: #ff9800; color: white; padding: 20px; font-size: 1.5em; font-weight: bold; }
-    .quiz-container { max-width: 600px; margin: 40px auto; background: #ffffff; padding: 30px; box-shadow: 0 0 15px rgba(0,0,0,0.15); border-radius: 10px; }
-    .question { font-size: 1.2em; margin-bottom: 20px; }
-    .options button { display: block; width: 100%; margin: 10px 0; padding: 12px; font-size: 1em; background: #4caf50; color: white; border: none; border-radius: 8px; cursor: pointer; transition: background 0.3s ease; }
-    .options button:hover { background: #388e3c; }
-    .result { margin-top: 20px; font-weight: bold; font-size: 1.1em; color: #3f51b5; }
-    #next-btn, #reset-btn { margin: 20px 10px; padding: 10px 20px; font-size: 1em; }
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #fffde7;
+      padding: 20px;
+    }
+    h2 {
+      text-align: center;
+      color: #4e342e;
+    }
+    #quiz-box {
+      max-width: 750px;
+      margin: auto;
+      background: #ffffff;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    .question {
+      font-weight: bold;
+      font-size: 1.2em;
+    }
+    .option {
+      margin: 10px 0;
+    }
+    button {
+      margin: 10px 5px;
+      padding: 10px 15px;
+      font-size: 16px;
+      background: #4caf50;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+    button:hover {
+      background: #2e7d32;
+    }
+    #result {
+      font-size: 1.3em;
+      font-weight: bold;
+      color: #2e7d32;
+      text-align: center;
+      margin-top: 20px;
+    }
   </style>
 </head>
 <body>
-  <header>🌍 General Knowledge Quiz</header>
-  <div class="quiz-container">
-    <div class="question" id="question">Loading question...</div>
-    <div class="options" id="options"></div>
-    <div class="result" id="result"></div>
-    <button id="next-btn" onclick="nextQuestion()">Next</button>
-    <button id="reset-btn" onclick="resetQuiz()">Reset</button>
+  <h2>General Knowledge Quiz - Nanhe Kahaniyaan</h2>
+  <div id="quiz-box">
+    <div id="question-box"></div>
+    <div id="options-box"></div>
+    <button onclick="nextQuestion()">Next</button>
+    <button onclick="resetQuiz()">Reset</button>
+    <div id="result"></div>
   </div>
 
   <script>
-    const quiz = Array.from({length: 50}, (_, i) => ({ question: `Gk Question ${i+1}?`, options: ['Option A', 'Option B', 'Option C', 'Option D'], answer: 'Option A' }));
-    let current = 0, score = 0;
+    const quiz = [
+      { q: "1. What is the capital of India?", options: ["Mumbai", "Kolkata", "Delhi", "Chennai"], answer: "Delhi" },
+      { q: "2. How many states are there in India?", options: ["28", "29", "30", "27"], answer: "28" },
+      { q: "3. Who is known as the Father of the Nation?", options: ["Jawaharlal Nehru", "Mahatma Gandhi", "B. R. Ambedkar", "Subhash Chandra Bose"], answer: "Mahatma Gandhi" },
+      { q: "4. Which is the national animal of India?", options: ["Tiger", "Lion", "Elephant", "Leopard"], answer: "Tiger" },
+      { q: "5. Which is the longest river in India?", options: ["Ganga", "Yamuna", "Brahmaputra", "Godavari"], answer: "Ganga" },
+      { q: "6. Who was the first Prime Minister of India?", options: ["Gandhi", "Ambedkar", "Nehru", "Rajendra Prasad"], answer: "Nehru" },
+      { q: "7. Which planet is known as the Red Planet?", options: ["Earth", "Mars", "Jupiter", "Venus"], answer: "Mars" },
+      { q: "8. What is the national flower of India?", options: ["Lotus", "Rose", "Jasmine", "Lily"], answer: "Lotus" },
+      { q: "9. In which year did India get independence?", options: ["1945", "1946", "1947", "1950"], answer: "1947" },
+      { q: "10. Which bird is the national bird of India?", options: ["Peacock", "Sparrow", "Eagle", "Parrot"], answer: "Peacock" }
+    ];
 
-    function showQuestion() {
-      const q = quiz[current];
-      document.getElementById("question").innerText = q.question;
-      const optionsDiv = document.getElementById("options");
-      optionsDiv.innerHTML = "";
-      q.options.forEach(opt => {
-        const btn = document.createElement("button");
-        btn.innerText = opt;
-        btn.onclick = () => checkAnswer(opt);
-        optionsDiv.appendChild(btn);
+    while (quiz.length < 50) {
+      const n = quiz.length + 1;
+      quiz.push({
+        q: `${n}. Demo Question ${n}`,
+        options: ["Option A", "Option B", "Option C", "Option D"],
+        answer: "Option A"
       });
     }
 
-    function checkAnswer(selected) {
-      if (selected === quiz[current].answer) score++;
-      document.getElementById("result").innerText = selected === quiz[current].answer ? "✅ Correct!" : `❌ Wrong! Correct: ${quiz[current].answer}`;
+    let currentQuestion = 0;
+    let score = 0;
+
+    function showQuestion() {
+      const q = quiz[currentQuestion];
+      document.getElementById("question-box").innerHTML = `<div class="question">${q.q}</div>`;
+      let optionsHtml = '';
+      q.options.forEach(opt => {
+        optionsHtml += `<div class="option"><input type="radio" name="option" value="${opt}"> ${opt}</div>`;
+      });
+      document.getElementById("options-box").innerHTML = optionsHtml;
     }
 
     function nextQuestion() {
-      current++;
-      document.getElementById("result").innerText = "";
-      if (current < quiz.length) showQuestion();
-      else showFinalScore();
+      const selected = document.querySelector('input[name="option"]:checked');
+      if (selected && selected.value === quiz[currentQuestion].answer) {
+        score++;
+      }
+      currentQuestion++;
+      if (currentQuestion < quiz.length) {
+        showQuestion();
+      } else {
+        document.getElementById("quiz-box").innerHTML = `<div id="result">Your Score: ${score} / ${quiz.length}</div><br><button onclick="resetQuiz()">Reset Quiz</button>`;
+      }
     }
 
     function resetQuiz() {
-      current = 0; score = 0;
-      document.getElementById("result").innerText = "";
-      showQuestion();
-    }
-
-    function showFinalScore() {
-      document.getElementById("question").innerText = "🎉 Quiz Completed!";
-      document.getElementById("options").innerHTML = "";
-      document.getElementById("result").innerText = `Your score: ${score} / 50`;
+      currentQuestion = 0;
+      score = 0;
+      location.reload();
     }
 
     showQuestion();
